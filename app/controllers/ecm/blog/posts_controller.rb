@@ -15,7 +15,7 @@ module Ecm
       private
 
       def collection_scope
-        super.published.order(updated_at: :desc)
+        super.published.friendly.order(updated_at: :desc)
       end
 
       def load_collection
@@ -23,7 +23,7 @@ module Ecm
       end
 
       def load_scope
-        super.published
+        super.published.friendly
       end
     end
   end

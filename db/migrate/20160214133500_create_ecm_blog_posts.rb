@@ -6,8 +6,11 @@ class CreateEcmBlogPosts < ActiveRecord::Migration[4.2]
       t.timestamp :published_at
       t.integer :created_by_id
       t.integer :updated_by_id
+      t.string :slug
 
       t.timestamps null: false
+
+      t.index :slug, unique: true
     end
   end
 end

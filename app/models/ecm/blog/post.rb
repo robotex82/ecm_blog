@@ -8,6 +8,10 @@ module Ecm::Blog
     include ActsAsPublished::ActiveRecord
     acts_as_published
 
+    # slugs
+    extend FriendlyId
+    friendly_id :title, use: :slugged
+
     belongs_to :creator, class_name: Ecm::Blog.creator_class_name, foreign_key: 'created_by_id'
     belongs_to :updater, class_name: Ecm::Blog.creator_class_name, foreign_key: 'updated_by_id', optional: true
 
