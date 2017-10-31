@@ -1,0 +1,8 @@
+%div{ id: dom_id(post), class: dom_class(post) }
+  %h1.post-title
+    = post.title
+    %small.post-creation-information.pull-right
+      = "#{l(post.created_at)} | #{post.creator.try(:human)}"
+  %p.post-tags= tag_labels_for(post)
+
+  %p.post-body= post.body(format: :html).html_safe

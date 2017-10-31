@@ -1,0 +1,10 @@
+de:
+  classes:
+    ecm/blog/engine: Blog
+  activerecord:
+    models:
+      ecm/blog/post:
+        one: Post
+        other: Posts
+  routes:
+    ecm_blog_engine: blog
