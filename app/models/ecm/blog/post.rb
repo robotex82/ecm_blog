@@ -20,7 +20,7 @@ module Ecm::Blog
     end
 
     module Markdown
-      def body(format: :html)
+      def body(format: nil)
         case format
         when :html
           to_markdown(read_attribute(:body))
