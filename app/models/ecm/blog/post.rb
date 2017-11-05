@@ -1,7 +1,6 @@
 module Ecm::Blog
   class Post < ActiveRecord::Base
-    has_many :comments, as: :commentable, class_name: 'Ecm::Comments::Comment'
-    
+    include Model::Ecm::Comments::CommentableConcern
     include Model::Ecm::Tags::TaggableConcern
 
     # acts as published
