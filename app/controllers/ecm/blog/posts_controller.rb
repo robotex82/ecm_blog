@@ -1,10 +1,11 @@
 module Ecm
   module Blog
     class PostsController < Ecm::Blog::Configuration.base_controller.constantize
-      include Controller::ResourceConcern
-      include Controller::ResourceUrlsConcern
-      include Controller::ResourceInflectionsConcern
-      include Controller::RestActionsConcern
+      include ResourcesController::Resources
+      include ResourcesController::ResourceInflections
+      include ResourcesController::RestResourceUrls
+      include ResourcesController::RestActions
+      include ResourcesController::Kaminari
 
       helper Ecm::Comments::ApplicationHelper
 
@@ -14,12 +15,8 @@ module Ecm
 
       private
 
-      def collection_scope
+      def load_collection_scope
         super.published.friendly.order(updated_at: :desc)
-      end
-
-      def load_collection
-        collection_scope.page(params[:page])
       end
 
       def load_scope
