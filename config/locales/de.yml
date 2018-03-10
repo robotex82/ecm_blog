@@ -6,5 +6,20 @@ de:
       ecm/blog/post:
         one: Post
         other: Posts
+    attributes:
+      ecm/blog/post:
+        id: ID
+        title: Titel
+        tags: Tags
+        body: Inhalt
+        published: Veröffentlicht
+        published_at: Veröffentlicht am
+        created_by_id: Erstellt von
+        creator: Erstellt von
+        slug: Freundliche ID
+        updated_by_id: Aktualisiert von
+        updater: Aktualisiert von
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
   routes:
     ecm_blog_engine: blog
