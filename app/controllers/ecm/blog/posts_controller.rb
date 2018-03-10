@@ -19,7 +19,7 @@ module Ecm
         super.published.friendly.order(updated_at: :desc)
       end
 
-      def load_scope
+      def load_resource_scope
         super.published.friendly
       end
     end
