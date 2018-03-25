@@ -1,8 +1,14 @@
 %div{ id: dom_id(post), class: dom_class(post) }
   %h1.post-title
-    = post.title
-    %small.post-creation-information.pull-right
+    = link_to(post.title, ecm_blog.url_for(post))
+  %small
+    %span.post-creation-information.text-muted
       = "#{l(post.created_at)} | #{post.creator.try(:human)}"
-  %p.post-tags= tag_labels_for(post)
+    |
+    %span.comments-information
+      = link_to(t('ecm.comments.commentable.comments_information', comments_count: post.comments.count), ecm_blog.post_url(post, anchor: 'comments'))
+    |
+    %span.post-tags
+      = tag_labels_for(post)
 
   %p.post-body= post.body(format: :html).html_safe

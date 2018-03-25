@@ -6,6 +6,7 @@ module Ecm
       include ResourcesController::RestResourceUrls
       include ResourcesController::RestActions
       include ResourcesController::Kaminari
+      include ResourcesController::LocationHistory
 
       helper Ecm::Comments::ApplicationHelper
 
@@ -16,7 +17,7 @@ module Ecm
       private
 
       def load_collection_scope
-        super.published.friendly.order(updated_at: :desc)
+        super.published.friendly.order(created_at: :desc)
       end
 
       def load_resource_scope

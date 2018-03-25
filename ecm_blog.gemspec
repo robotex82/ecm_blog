@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails'
   s.add_dependency 'acts_as_published'
+  s.add_dependency 'html2markdown'
   s.add_dependency 'kaminari'
   s.add_dependency 'kramdown'
   s.add_dependency 'friendly_id'

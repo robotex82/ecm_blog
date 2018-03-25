@@ -1,6 +1,7 @@
-%h1#page-title= resource_class.model_name.human(count: :other)
+%h1#page-title= Ecm::Blog::Configuration.posts_index_page_title_proc.call(self)
 
 = render partial: "post_in_index", collection: @collection, as: :post
 
-.col-lg.12.text-center
-  = bootstrap_paginate(@collection)
+.row
+  .col-lg-12.text-center
+    = paginate(@collection, Ecm::Blog::Configuration.pagination_options_proc.call(self))
