@@ -11,4 +11,5 @@
     %span.post-tags
       = tag_labels_for(post)
 
-  %p.post-body= post.body(format: :html).html_safe
+  .post-body.truncate-lines-3
+    = post.body(format: :html).html_safe
