@@ -7,6 +7,8 @@ module Ecm::Blog
     include ActsAsPublished::ActiveRecord
     acts_as_published
 
+    has_many_attached :assets if respond_to?(:has_many_attached)
+
     # slugs
     extend FriendlyId
     friendly_id :title, use: :slugged
@@ -36,5 +38,39 @@ module Ecm::Blog
     end
 
     include Markdown
+
+    module AssetDetailsConcern
+      extend ActiveSupport::Concern
+
+      included do
+        has_many :asset_details, dependent: :destroy
+        before_validation :cleanup_orphaned_asset_details
+        before_validation :ensure_asset_details
+      end
+
+      def asset_details_count
+        asset_details.count
+      end
+
+      private
+
+      def cleanup_orphaned_asset_details
+        asset_details.each do |asset_detail|
+          asset_detail.destroy if asset_detail.asset.nil?
+        end
+      end
+
+      def ensure_asset_details
+        (assets - asset_details.all.map(&:asset)).map do |asset|
+          build_asset_detail_for_asset(asset)
+        end
+      end
+
+      def build_asset_detail_for_asset(asset)
+        asset_details.build(asset: asset)
+      end
+    end
+
+    include AssetDetailsConcern if respond_to?(:has_many_attached)
   end
 end

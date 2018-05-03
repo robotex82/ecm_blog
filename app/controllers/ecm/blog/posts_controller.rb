@@ -10,6 +10,8 @@ module Ecm
 
       helper Ecm::Comments::ApplicationHelper
 
+      helper Rails::AddOns::TableHelper
+
       def self.resource_class
         Ecm::Blog::Post
       end
