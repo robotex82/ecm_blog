@@ -28,9 +28,17 @@ de:
         updated_at: Aktualisiert am
       ecm/blog/asset_detail:
         id: ID
+        post: Post
+        post_id: Post
+        asset: Datei
+        asset_id: Datei
         asset_actions: ''
+        description: Beschreibung
         filename: Dateiname
+        title: Titel
         preview_picture: Vorschau
+        position: Position
+        published_at: Veröffentlicht am
         created_at: Erstellt am
         updated_at: Aktualisiert am
   routes:
