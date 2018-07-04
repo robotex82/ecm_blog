@@ -1,0 +1,5 @@
+= render_navigation do |primary|
+  - posts = Ecm::Blog::Post.all.pluck(:created_at)
+  - post_months = posts.group_by {|t| t.beginning_of_month }
+  - post_months.sort.reverse.each do |month, posts|
+    - primary.item "posts_for_#{month}", "#{I18n.l(month, format: '%B %Y')} (#{posts.size})", ecm_blog.month_posts_path(year: month.year, month: month.month)

@@ -16,6 +16,8 @@ module Ecm::Blog
     belongs_to :creator, class_name: Ecm::Blog.creator_class_name, foreign_key: 'created_by_id'
     belongs_to :updater, class_name: Ecm::Blog.creator_class_name, foreign_key: 'updated_by_id', optional: true
 
+    scope :for_date, ->(year, month, day) { where(created_at: "#{year}-#{month || 1}-#{day || 1}".to_date.beginning_of_month.."#{year}-#{month || 1}-#{day || 1}".to_date.end_of_month) }
+
     def human
       title
     end
@@ -72,5 +74,15 @@ module Ecm::Blog
     end
 
     include AssetDetailsConcern if respond_to?(:has_many_attached)
+
+    module PreviewPictureConcern
+      extend ActiveSupport::Concern
+
+      def preview_picture
+        asset_details.images.first
+      end
+    end
+
+    include PreviewPictureConcern
   end
 end

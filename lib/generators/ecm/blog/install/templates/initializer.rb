@@ -33,4 +33,10 @@ Ecm::Blog.configure do |config|
   # default: config.pagination_options_proc = ->(view) { { theme: 'twitter-bootstrap-4', pagination_class: 'justify-content-center' } }
   #
   config.pagination_options_proc = ->(view) { { theme: 'twitter-bootstrap-4', pagination_class: 'justify-content-center' } }
+
+  # Options for rendering the ActiveStorage preview picture in the posts index view.
+  #
+  # Default: config.preview_picture_asset_variant_options = { resize: '320x240' }
+  #
+  config.preview_picture_asset_variant_options = { resize: '320x240' }
 end

@@ -19,7 +19,11 @@ module Ecm
       private
 
       def load_collection_scope
-        super.published.friendly.order(created_at: :desc)
+        if params.has_key?(:year)
+          super.published.for_date(params[:year], params[:month], params[:day])
+        else
+          super.published.order(created_at: :desc)
+        end
       end
 
       def load_resource_scope
