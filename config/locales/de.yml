@@ -17,6 +17,7 @@ de:
         title: Titel
         tags: Tags
         body: Inhalt
+        position: Position
         published: Veröffentlicht
         published_at: Veröffentlicht am
         created_by_id: Erstellt von

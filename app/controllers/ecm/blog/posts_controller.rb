@@ -22,7 +22,7 @@ module Ecm
         if params.has_key?(:year)
           super.published.for_date(params[:year], params[:month], params[:day])
         else
-          super.published.order(created_at: :desc)
+          super.published
         end
       end
 

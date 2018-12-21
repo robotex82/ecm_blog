@@ -3,10 +3,15 @@ module Ecm::Blog
     include Model::Ecm::Comments::CommentableConcern
     include Model::Ecm::Tags::TaggableConcern
 
-    # acts as published
+    # publishing
     include ActsAsPublished::ActiveRecord
     acts_as_published
 
+    # positioning
+    acts_as_list
+    default_scope { order(position: :asc) }
+
+    # assets
     has_many_attached :assets if respond_to?(:has_many_attached)
 
     # slugs
