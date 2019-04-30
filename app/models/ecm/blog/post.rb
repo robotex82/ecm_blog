@@ -8,7 +8,7 @@ module Ecm::Blog
     acts_as_published
 
     # positioning
-    acts_as_list
+    acts_as_list add_new_at: :top
     default_scope { order(position: :asc) }
 
     # assets
