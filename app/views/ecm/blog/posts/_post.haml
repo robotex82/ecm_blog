@@ -12,3 +12,21 @@
       = tag_labels_for(post)
 
   %p.post-body= post.body(format: :html).html_safe
+
+  - if post.asset_details.images.any?
+    .row
+      - post.asset_details.images.order(position: :asc).each do |picture_detail|
+        .col-lg-4.d-flex.align-items-stretch
+          = bootstrap_card(image_options: { src: main_app.url_for(picture_detail.asset)}, additional_css_classes: 'text-center border-0' ) do
+            .card-body
+              %h5.card-title
+                = picture_detail.title
+              %p.card-text
+                = picture_detail.description
+
+  - if post.asset_details.non_images.any?
+    = collection_table(collection: post.asset_details.non_images.order(position: :asc)) do |t|
+      = t.column :filename
+      = t.column :actions do |resource|
+        - link_to(main_app.url_for(resource.asset), class: 'btn btn-primary') do
+          - t('.download')

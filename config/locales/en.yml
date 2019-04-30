@@ -6,12 +6,18 @@ en:
       ecm/blog/post:
         one: Post
         other: Posts
+      ecm/blog/asset_detail:
+        one: Asset
+        other: Assets
     attributes:
       ecm/blog/post:
         id: ID
+        assets: Asset
+        asset_details_count: Assets
         title: Title
         tags: Tags
         body: Body
+        position: Position
         published: Published
         published_at: Published at
         created_by_id: Created by
@@ -19,6 +25,21 @@ en:
         slug: Slug
         updated_by_id: Updated by
         updater: Updated by
+        created_at: Created at
+        updated_at: Updated at
+      ecm/blog/asset_detail:
+        id: ID
+        post: Post
+        post_id: Post
+        asset: File
+        asset_id: File
+        asset_actions: ''
+        description: Description
+        filename: Filename
+        title: Title
+        preview_picture: Preview
+        position: Position
+        published_at: Published at
         created_at: Created at
         updated_at: Updated at
   routes:
